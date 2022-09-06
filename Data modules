@@ -1,0 +1,40 @@
+import processing.serial.*;
+import cc.arduino.*;
+Arduino arduino;
+
+public void setup() {
+  size(500, 500);
+  arduino = new Arduino(this, Arduino.list()[0], 57600);
+}
+
+public void draw() {
+  
+  module1();
+  module2();
+}
+
+
+void module1()//sound
+{
+  float sound1 = 20*log(arduino.analogRead(4));
+  int mx1 = 100;                                     
+  int my1 = 200;
+  fill(255,255,255);
+  rect(mx1-25,my1-25, 50, 50);
+  System.out.println(sound1);
+  fill(0,0,0);
+  text(Integer.toString((int)sound1), mx1-10,my1+10);
+  text("sound", mx1-15,my1-10);
+}
+void module2()//sound
+{
+  float light1 = (arduino.analogRead(5));
+  int mx2 = 200;                                     
+  int my2 = 200;
+  fill(255,255,255);
+  rect(mx2-25,my2-25, 50, 50);
+  System.out.println(light1);
+  fill(0,0,0);
+  text(Integer.toString((int)light1), mx2-10,my2+10);
+  text("light", mx2-15,my2-10);
+}
