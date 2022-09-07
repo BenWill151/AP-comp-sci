@@ -1,5 +1,6 @@
 import processing.serial.*;
 import cc.arduino.*;
+import java.util.Random;
 Arduino arduino;
 
 public void setup() 
@@ -14,7 +15,9 @@ public void draw()
   lightmodule1();
   buttonRmodule1();
   buttonLmodule1();
-  accelerometermodule1();
+  //accelerometermodule1();
+  randommodule1();
+  delay(50);
 }
 
 void soundmodule1()//sound
@@ -47,15 +50,19 @@ void buttonRmodule1()//Right button
 {
   float buttonRdata = (arduino.analogRead(1));
   boolean buttonR = false;
+  int colorRR = 255;
+  int colorRG = 0;
   if (buttonRdata > 500)
   {
     buttonR = true;
+    colorRR = 0;
+    colorRG = 255;
 
   }
 
   int mx3 = 350;
   int my3 = 200;
-  fill(255,255,255);
+  fill(colorRR,colorRG,0);
   rect(mx3-25,my3-25, 100, 50);
   System.out.println(buttonR);
   fill(0,0,0);
@@ -68,32 +75,52 @@ void buttonLmodule1()//Left button
   float buttonLdata = (arduino.analogRead(6));
   System.out.println(buttonLdata);
   boolean buttonL = false;
+  int colorLR = 255;
+  int colorLG = 0;
   if (buttonLdata > 500)
   {
     buttonL = true;
+    colorLR = 0;
+    colorLG = 255;
   }
   int mx4 = 230;
   int my4 = 200;
-  fill(255,255,255);
+  fill(colorLR,colorLG,0);
   rect(mx4-25,my4-25,100,50);
   System.out.println(buttonL);
   fill(0,0,0);
   text(Boolean.toString(buttonL), mx4-10, my4+10);
   text("L button pressed", mx4-19, my4-10);
 }
-void accelerometermodule1()//Left button
-{
-  float accelerometer = (arduino.analogRead(6));//13 14 15
-  System.out.println(accelerometer);
+//void accelerometermodule1()//Left button
+//{
+ // float accelerometer = (arduino.analogRead(6));//13 14 15
+ // System.out.println(accelerometer);
   
+  
+ // int mx5 = 230;
+ // int my5 = 300;
+ // fill(255,255,255);
+ // rect(mx5-25,my5-25,100,50);
+ // System.out.println(accelerometer);
+ // fill(0,0,0);
+ // text(Integer.toString((int)accelerometer), mx5-10, my5+10);
+ // text("accelerometer", mx5-19, my5-10);
+//}
+void randommodule1()//Left button
+{
+  Random rand = new Random();
+  System.out.println(rand);
+   int rand_int1 = rand.nextInt(1000);
+   int rand_int2 = rand.nextInt(1000);
   
   int mx5 = 230;
   int my5 = 300;
   fill(255,255,255);
   rect(mx5-25,my5-25,100,50);
-  System.out.println(accelerometer);
+  
   fill(0,0,0);
-  text(Integer.toString((int)accelerometer), mx5-10, my5+10);
-  text("accelerometer", mx5-19, my5-10);
+  text((Integer.toString((int)rand_int1))+(Integer.toString((int)rand_int2)) , mx5-10, my5+10);
+  text("numbers", mx5-19, my5-10);
+  
 }
-
