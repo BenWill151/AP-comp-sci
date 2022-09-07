@@ -2,19 +2,22 @@ import processing.serial.*;
 import cc.arduino.*;
 Arduino arduino;
 
-public void setup() {
+public void setup() 
+{
   size(500, 500);
   arduino = new Arduino(this, Arduino.list()[0], 57600);
 }
 
-public void draw() {
-  
-  module1();
-  module2();
+public void draw() 
+{  
+  soundmodule1();
+  lightmodule1();
+  buttonRmodule1();
+  buttonLmodule1();
+  accelerometermodule1();
 }
 
-
-void module1()//sound
+void soundmodule1()//sound
 {
   float sound1 = 20*log(arduino.analogRead(4));
   int mx1 = 100;                                     
@@ -26,10 +29,11 @@ void module1()//sound
   text(Integer.toString((int)sound1), mx1-10,my1+10);
   text("sound", mx1-15,my1-10);
 }
-void module2()//sound
+
+void lightmodule1()//light 
 {
   float light1 = (arduino.analogRead(5));
-  int mx2 = 200;                                     
+  int mx2 = 200-35;                                     
   int my2 = 200;
   fill(255,255,255);
   rect(mx2-25,my2-25, 50, 50);
@@ -38,3 +42,58 @@ void module2()//sound
   text(Integer.toString((int)light1), mx2-10,my2+10);
   text("light", mx2-15,my2-10);
 }
+
+void buttonRmodule1()//Right button
+{
+  float buttonRdata = (arduino.analogRead(1));
+  boolean buttonR = false;
+  if (buttonRdata > 500)
+  {
+    buttonR = true;
+
+  }
+
+  int mx3 = 350;
+  int my3 = 200;
+  fill(255,255,255);
+  rect(mx3-25,my3-25, 100, 50);
+  System.out.println(buttonR);
+  fill(0,0,0);
+  text(Boolean.toString(buttonR),mx3-10,my3+10);
+  text("R button pressed", mx3-19,my3-10);
+}
+
+void buttonLmodule1()//Left button
+{
+  float buttonLdata = (arduino.analogRead(6));
+  System.out.println(buttonLdata);
+  boolean buttonL = false;
+  if (buttonLdata > 500)
+  {
+    buttonL = true;
+  }
+  int mx4 = 230;
+  int my4 = 200;
+  fill(255,255,255);
+  rect(mx4-25,my4-25,100,50);
+  System.out.println(buttonL);
+  fill(0,0,0);
+  text(Boolean.toString(buttonL), mx4-10, my4+10);
+  text("L button pressed", mx4-19, my4-10);
+}
+void accelerometermodule1()//Left button
+{
+  float accelerometer = (arduino.analogRead(6));//13 14 15
+  System.out.println(accelerometer);
+  
+  
+  int mx5 = 230;
+  int my5 = 300;
+  fill(255,255,255);
+  rect(mx5-25,my5-25,100,50);
+  System.out.println(accelerometer);
+  fill(0,0,0);
+  text(Integer.toString((int)accelerometer), mx5-10, my5+10);
+  text("accelerometer", mx5-19, my5-10);
+}
+
