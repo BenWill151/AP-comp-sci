@@ -17,6 +17,7 @@ public void draw()
   buttonLmodule1();
   //accelerometermodule1();
   randommodule1();
+  tempmodule1();
   delay(50);
 }
 
@@ -123,4 +124,16 @@ void randommodule1()//Left button
   text((Integer.toString((int)rand_int1))+(Integer.toString((int)rand_int2)) , mx5-10, my5+10);
   text("numbers", mx5-19, my5-10);
   
+}
+void tempmodule1()//temperature
+{
+  float temp1 = (arduino.analogRead(11));
+  int mx6 = 350;                                     
+  int my6 = 300;
+  fill(255,255,255);
+  rect(mx6-25,my6-25, 100, 50);
+  System.out.println(temp1);
+  fill(0,0,0);
+  text(Integer.toString((int)temp1), mx6-10,my6+10);
+  text("temperature", mx6-15,my6-10);
 }
