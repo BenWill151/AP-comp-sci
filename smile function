@@ -1,0 +1,22 @@
+void setup()
+{
+  size(500,500);
+}
+
+void draw()
+{
+  smile(400, 250);
+  smile(250, 250);
+  smile(100, 250);
+}
+
+void smile(int x, int y)
+{
+  fill(255,255,0);//yellow
+  ellipse(x,y,300,300);
+  arc(x,y,230,230, radians(30), radians (150));
+  fill(0);//black
+  ellipse(x-50, y-40,30,60);
+  ellipse(x+50, y-40,30,60);
+}
+
