@@ -1,0 +1,28 @@
+void setup()
+{
+  size(500,500);
+  
+}
+
+void draw()
+{
+  hexagon();
+}
+
+void hexagon()
+{
+  float hs = 28.85;
+  float hix1 = 250;
+  float hiy1 = 250;
+  float hix2 = 250;
+  float hiy2 = 250;
+  float hix3 = 250;
+  float hiy3 = 250;
+  triangle(hix1-hs,hiy1+50,hix2,hiy2,hix3+hs,hiy3+50);//bottom middle
+  triangle(hix1-hs,hiy1-50,hix2,hiy2,hix3+hs,hiy3-50);//top middle
+  triangle(hix1+hs,hiy1+50,hix2,hiy2,hix3+50,hiy3);//bottom right
+  triangle(hix1-hs,hiy1+50,hix2,hiy2,hix3-50,hiy3);//bottom left
+  triangle(hix1+hs,hiy1-50,hix2,hiy2,hix3+50,hiy3);//top right
+  triangle(hix1-hs,hiy1-50,hix2,hiy2,hix3-50,hiy3);//top left
+  
+}
