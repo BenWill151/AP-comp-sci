@@ -5,8 +5,8 @@ void setup()
   size(500,500);
   noStroke();
   noFill();
+  colorMode(HSB);
   
-  background(0,128,128);
   
 }
 float column = -15;
@@ -14,30 +14,11 @@ float column = -15;
 void draw()
 {
   
-  double rv = Math.random()*255;
-  double gv = Math.random()*255;
-  double bv = Math.random()*255;
-  int r;
-int g;
-int b;
-int lx =0;
-for ( r = 0; r <= 255; r++ )
-{
-  for ( g = 0; g <= 255; g++ )
-  {
-    for ( b = 0; b <= 255; b++)
-    {
-      lx+=1;
-      fill(r,g,b);
-      line(lx,-50,lx,600);
-    }
-  }
-}
-  
-  
-  //int r = (int)rv;
- // int g = (int)gv;
- // int b = (int)bv;
+
+
+  float time  = radians(frameCount);
+  fill(255*(.5+.5*cos(time)), 255,255);
+  background(255*(.5+.5*cos(time)), 255,225);
   
   for(int y= 1; y<800; y+=17)
 {
@@ -88,3 +69,38 @@ void hexagon(float x, float y, float scale)
   triangle(hix1-hs, hiy1-theight, hix2, hiy2, hix3-hs*2, hiy3);//top left
   
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//  double rv = Math.random()*255;
+//  double gv = Math.random()*255;
+// double bv = Math.random()*255;
+// int r;
+//int g;
+//int b;
+//int lx =0;
+//  int r = (int)rv;
+// int g = (int)gv;
+// int b = (int)bv;
+// fill(r,g,b);
