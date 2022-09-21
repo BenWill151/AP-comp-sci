@@ -2,10 +2,11 @@ void setup()
 {
   size(300,300);
   strokeWeight(1);
-  //background(0);
+  background(#F7F7F7);
   PImage img;
-  img = loadImage("stonks.jpg");
-  image(img, 0, 0);
+  img = loadImage("stonks.png");
+  img.resize(150,150);
+  image(img, 50, 50);
 
 }
 
@@ -15,8 +16,11 @@ int endX = 0;
 int endY = 150;
 void draw()
 {
-  
-  stroke((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255));
+  if (Math.random()<.5)
+      stroke(255,0,0);
+  else
+      stroke(0,255,0);
+ // stroke((int)(Math.random()*255)+1,(int)(Math.random()*255)+1,0);
   while(endX<420){
     endX = startX + (int)(Math.random()*9);
     endY = startY + (int)(Math.random()*18)-9;
