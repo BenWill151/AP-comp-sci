@@ -1,0 +1,64 @@
+void setup(){
+ size(900,200);
+ textAlign(CENTER,CENTER);
+ noLoop();
+}
+Coin bob;
+int count = 0;
+boolean heads;
+void draw(){
+  for(int x = 80; x<= 900; x+=125){
+    bob = new Coin(x,100);
+    bob.show();
+    if(heads== true){
+      count++;
+    }
+  }
+  System.out.println(count);
+}
+void mousepressed(){
+  redraw();
+}
+class Coin
+{
+  
+  int mX, mY;
+  Coin(int x, int y)
+  {
+    flip();
+    mX = x;
+    mY = y;
+  }
+  void flip()
+  {
+    if(Math.random()< .5)
+    {
+      heads = true;
+    }else{
+      heads =false;
+    }
+  }
+  void show()
+  {
+    //noStroke();
+    fill(255);
+    
+    fill(0);
+    textSize(30);
+    if(heads == true){
+      fill(0,255,0);
+      ellipse(mX,mY, 100,100);
+      fill(0);
+      text("Heads", mX+2, mY-3);
+      
+      
+    }else{
+      fill(255,0,0);
+      ellipse(mX,mY, 100,100);
+      fill(0);
+      text("Tails",mX,mY);
+      
+      
+    }
+  }
+}
