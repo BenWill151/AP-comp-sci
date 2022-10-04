@@ -1,0 +1,60 @@
+// 3x3 systems of equations
+
+int a,b,c,d,e,f,g,h,i;
+int A, B, C;
+void draw()
+{
+  a b c j
+  d e f k 
+  g h i l
+  
+  a j c 
+  d k f 
+  g l i
+  
+  a b j 
+  d e k 
+  g h l 
+  
+}
+void func3x3()
+{
+  //funcDenominator();
+}
+  void funcDenominator(int a,int b, int c, int d, int e, int f, int g, int h, int i)
+  {
+    float A1 = ((e*i)-(f*h))*a;
+    float B1 = ((d*i)-(f*g))*b;
+    float C1 = ((d*h)-(e*g))*c;
+    float Den = A1 - B1 + C1;
+  }
+  void funcNx(int a,int b, int c, int d, int e, int f, int g, int h, int i, int j, int k, int l)
+  {
+    float A2 = ((e*i)-(f*h))*j;
+    float B2 = ((k*i)-(f*l))*b;
+    float C2 = ((k*h)-(e*l))*c;
+    float Nx = A2 - B2 + C2;
+  }
+  void funcNy(int a,int b, int c, int d, int e, int f, int g, int h, int i, int j, int k, int l)
+  {
+    float A3 = ((k*i)-(f*l))*a;
+    float B3 = ((d*i)-(f*g))*j;
+    float C3 = ((d*l)-(k*g))*c;
+    float Ny = A3 - B3 + C3;
+  }
+  void funcNz(int a,int b, int c, int d, int e, int f, int g, int h, int i,  int j, int k, int l)
+  {
+    float A4 = ((e*l)-(k*h))*a;
+    float B4 = ((d*l)-(k*g))*b;
+    float C4 = ((d*h)-(e*g))*j;
+    float Nz = A4 - B4 + C4;
+  }
+  void answer()
+  {
+    float X = Nx/Den;
+    float Y = Ny/Den;
+    float Z = Nz/Den;
+    System.out.println(X);
+    System.out.println(Y);
+    System.out.println(Z);
+  }
