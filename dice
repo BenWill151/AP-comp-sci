@@ -1,13 +1,18 @@
 void setup()
 {
   noLoop();
-  size(750,750 );
+  size(900,1000);
   textAlign(CENTER,CENTER);
   imageMode(CENTER);
 }
+int total = 0;
+int highest = 0;
+int rolls = 1;
 void draw()
 {
-  neatandtidy();
+  background(0);
+  //neatandtidy(); // not needed anymore
+  neetandtiddy();
 }
 void mousePressed()
 {
@@ -34,6 +39,24 @@ class Die //models one single dice cube
   }
 }
 
+void neetandtiddy(){
+  for(int y = 150 ; y <= 750 ; y = y+150){
+    for(int x = 150 ; x <= 750 ; x = x+150){
+      Die DIE;
+      DIE = new Die(x,y);
+      DIE.show();
+      total = total + DIE.R1;
+    }
+  }
+  text("Total = "+total, 450, 950);
+  text("highest = "+highest, 650, 950);
+  text("rolls = "+rolls, 250, 950);
+  if (highest <= total){
+    highest = total;
+  }
+  total = 0;
+  rolls++;
+}
 
 
 
