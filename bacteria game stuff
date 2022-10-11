@@ -1,0 +1,92 @@
+//player vars
+P P1;
+int px,py,score;
+int H = 10;
+//boolean hit = false;
+//bacteria vars
+B B1;
+//food vars
+F F1;
+void setup()
+{
+  size(500,500);
+}
+
+
+void draw()
+{
+  background(0);
+  
+  Bacteria();
+  Food();
+  player();
+}
+
+class B{
+  int mx, my, mB;
+  boolean Btf = false;
+  B(int x, int y)
+  {
+    mx = x;
+    my = y;
+  }
+  void show()
+  {
+    fill(255,0,0);
+    ellipse(mx,my,15,15);
+  }
+  
+}
+class F{
+  int mx, my, mF;
+  boolean Ftf = false;
+  F(int x, int y)
+  {
+    mx = x;
+    my = y;
+  }
+  void show()
+  {
+    fill(0,255,0);
+    ellipse(mx,my,15,15);
+  }
+}
+class P{
+  int mx, my, mF;
+  boolean Ptf = false;
+  P(int x, int y)
+  {
+    mx = x;
+    my = y;
+  }
+  void show()
+  {
+    //fill(0,255,0);
+    //ellipse(mx,my,15,15);
+  }
+  void player()
+  {
+  
+  px = mouseX;
+  py = mouseY;
+  fill(255,255,255);
+  ellipse(px,py,25,25);
+  }
+  
+}
+void Bacteria()
+{
+  B1 = new B (250,250);
+  B1.show();
+}
+void Food()
+{
+  F1 = new F(200,200);
+  F1.show();
+}
+void player(){
+  P1 = new P(px,py);
+  P1.show();
+  P1.player();
+}
+
