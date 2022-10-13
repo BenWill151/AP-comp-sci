@@ -1,0 +1,52 @@
+Bean W1;
+Bean [] Beans;
+Bean [] hillbillies = {new Bean(), new Bean(), new Bean()};
+void setup()
+{
+  imageMode(CENTER);
+  size(1000,1000);
+  W1 = new Bean();
+  Beans = new Bean[100];
+  int i = 0;
+  while(i < Beans.length)
+  {
+    Beans[i] = new Bean();
+    i++;
+  }
+}
+void draw()
+{
+  background(0);
+  W1.show();
+  
+  for(int i = 0; i < Beans.length; i++)
+  {
+    Beans[i].walk();
+    Beans[i].show();
+  }
+}
+
+class Bean{
+  int mx,my,w1;
+  PImage img;
+  color beanflavor = color(143, 79, 66);
+  int r = (int)(Math.random()*2)+1;
+  Bean(){
+    mx = my = 500;    
+  }
+  void show()
+  {
+    img = loadImage("BEAN.png");
+    img.resize(100,60);        
+    fill(beanflavor);
+    translate(width/r, height/r);
+    rotate(PI/r);
+    ellipse(mx,my,25,50);
+    image(img,mx,my);
+  }
+  void walk()
+  {
+    mx = mx +(int)(Math.random()*70)-30;
+    my = my +(int)(Math.random()*70)-30;
+  }
+}
