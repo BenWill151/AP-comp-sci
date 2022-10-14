@@ -50,3 +50,83 @@ class Bean{
     my = my +(int)(Math.random()*70)-30;
   }
 }
+
+Bean W1;
+Bean [] Beans;
+Bean [] hillbillies = {new Bean(), new Bean(), new Bean()};
+int size = 10;
+float xpos;
+float ypos;
+float speed = 10;
+float angle;
+int beanflavor;
+void setup()
+{
+  imageMode(CENTER);
+  size(1000,1000);
+  W1 = new Bean();
+  Beans = new Bean[10];
+  int i = 0;
+  while(i < Beans.length)
+  {
+    Beans[i] = new Bean();
+    i++;
+  }
+}
+void draw()
+{
+  //background(0);
+  W1.show();
+  
+ 
+  
+  for(int i = 0; i < Beans.length; i++)
+  {
+    Beans[i].walk();
+    Beans[i].show();
+  }
+}
+
+class Bean{
+  float mx,my,w1;
+  PImage img;
+  int beanflavor2;
+  int r = (int)(Math.random()*2)+1;
+  Bean(color beanflavor){
+    mx = my = 500;  
+  }
+  void show()
+  {
+    int g = (int)Math.random()*2;
+    if(g == 0){
+      beanflavor = color(255, 0, 0);
+    }else if(g == 1){
+      beanflavor = color(0, 255, 0);
+    }else if (g == 2){
+      beanflavor = color(0, 255, 255);
+    }
+    img = loadImage("BEAN.png");
+    img.resize(100,60);        
+    fill(beanflavor);
+    //translate(width/r, height/r);
+    //rotate(PI/r);
+    mx = xpos;
+    my = ypos;
+    ellipse(xpos,ypos,25,50);
+    //image(img,mx,my);
+  }
+  void walk()
+  {
+   
+   if (abs(xpos - mouseX) > 2 || abs(ypos - mouseY) > 2) {
+    angle = atan2(mouseY - ypos, mouseX - xpos);
+    xpos = xpos + round(speed * cos(angle));
+    ypos = ypos + round(speed * sin(angle));
+  }
+    if(dist(mouseX,mouseY,xpos,ypos)<1)
+    {
+         xpos = xpos +(int)(Math.random()*70)-30;
+         ypos = ypos +(int)(Math.random()*70)-30;
+    }
+   }
+  }
