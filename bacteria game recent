@@ -26,11 +26,13 @@ void setup()
 void draw()
 {
   background(0);
+  player();
   Bacteria();
   Food();
-  player();
   collision();
   Game();
+  //int mouseX1 = mouseX;
+  //int mouseY1 = mouseY;
 }
 void collision(){
     float bx = B1.mx;
@@ -86,7 +88,7 @@ void Bacteria()
   
   B1 = new B (250,250, 1);
   B1.show();
-  B2 = new B[30];
+  B2 = new B[100];
   int i = 0;
   while(i < B2.length)
   {
@@ -101,6 +103,7 @@ void Bacteria()
 }
 class B{
   float mx, my, speed;
+  int rand = ((int)(Math.random()*1000)-500);
   boolean Btf = false;
   B(int x, int y, int s)
   {
@@ -114,14 +117,14 @@ class B{
   //float wx;
   //float wy;
   //wx = (int)(Math.random()*12)-6;
-  //wy = (int)(Math.random()*12)-6;
+  //wy = ((int)(Math.random()*12)-6);
   //wx = xpos;
   //wy = ypos;
   
   
   
-  if (abs(xpos - mouseX) > 2 || abs(ypos - mouseY) > 2) {
-    angle = atan2(mouseY - ypos, mouseX - xpos);
+  if (abs(xpos - mouseX+rand) > 2 || abs(ypos - mouseY+rand) > 2) {
+    angle = atan2(mouseY+rand - ypos, mouseX+rand- xpos);
     xpos = xpos + round(speed * cos(angle));
     ypos = ypos + round(speed * sin(angle));
   }
