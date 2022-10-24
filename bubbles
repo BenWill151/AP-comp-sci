@@ -1,0 +1,42 @@
+class Bubble{
+  int myX, myY, myC, mySize, mySpeed ;
+  
+  Bubble(){
+    myX = width/2;
+    myY = height-70;
+    myC = color((int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256));
+    mySpeed = (int)(Math.random()*6)+1;
+    mySize = (int)(Math.random()*50)+20;
+  }
+  Bubble(int x, int y){
+    myX = x;
+    myY = y;
+    myC = color((int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256));    
+    mySize = (int)(Math.random()*50)+20;
+    mySpeed = mySize/6;
+  }  
+  void rise(){
+    myY -= mySpeed;
+    myX = myX + (int)(Math.random()*3)-1;
+  }
+  void show(){
+    fill(myC,90);
+    ellipse(myX, myY, mySize, mySize);
+  }
+}
+Bubble [] bubs = new Bubble[100];
+void setup(){
+  size(500,500);
+  noStroke();
+  for(int i = 0; i< bubs.length; i++){
+    bubs[i] = new Bubble((int)(Math.random()*500),(int)(Math.random()*70)+400);
+  }
+}
+void draw(){
+  background(255);
+  for(int i = 0; i< bubs.length; i++){
+    bubs[i].rise();
+    bubs[i].show();
+  }  
+}
+
