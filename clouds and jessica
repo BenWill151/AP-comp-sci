@@ -1,0 +1,79 @@
+class Cloud{
+  int myX, myY, myC, myO, myWidth, myHeight;
+  int mySpeed;
+  
+ Cloud (){   
+    myC = color(255,255,255);
+    myO = (int)(Math.random()*60);
+    myX = (int)(Math.random()*1100)-150;
+    myY = (int)(Math.random()*40)+40;   
+    myWidth = (int)(Math.random()*80)+80;
+    myHeight = (int)(Math.random()*40)+20;
+    mySpeed = (int)(Math.random()*2)+1;
+  }
+ Cloud (int x, int y){
+    myC = color(255,255,255);
+    myO = (int)(Math.random()*60);
+    myX = (int)(Math.random()*1100)-150;
+    myY = (int)(Math.random()*80)+40;   
+    myWidth = (int)(Math.random()*80)+80;
+    myHeight = (int)(Math.random()*40)+20;
+    mySpeed = (int)(Math.random()*2)+1;
+  }  
+  void drift(){
+    myX += mySpeed;
+    //myY = myX + (int)(Math.random()*3)-1;
+  }
+  void show(){
+    fill(myC,myO);
+    ellipse(myX, myY, myWidth, myHeight);
+    if(myX>width+150){
+      myX = -150;
+    }
+  }
+}
+StormCloud jessica;
+
+
+Cloud[] bobs = new Cloud[100];
+void setup(){
+  size(1000,1000);
+  noStroke();
+  for(int i = 0; i< 10; i++){
+    //bobs[i] = new Cloud((int)(Math.random()*width),(int)(Math.random()*70)+height);
+    bobs[i] = new StormCloud();
+  }
+  for(int i = 10; i< bobs.length; i++){
+    //bobs[i] = new Cloud((int)(Math.random()*width),(int)(Math.random()*70)+height);
+    bobs[i] = new Cloud(width/2,height/2);
+  }
+  jessica = new StormCloud();
+}
+void draw(){
+  background(0,50,125);
+  for(int i = 0; i< bobs.length; i++){
+    bobs[i].drift();
+    bobs[i].show();
+  }  
+  
+  jessica.drift();
+  jessica.show();
+}
+
+class StormCloud extends Cloud{
+  StormCloud(){
+     myC = (int)(Math.random()*20)+80;
+     myO = (int)(Math.random()*60)+100;
+     myX = (int)(Math.random()*100)+300;
+     myY = (int)(Math.random()*30)+50;   
+     myWidth = (int)(Math.random()*80)+160;
+     myHeight = (int)(Math.random()*40)+20;
+     mySpeed = 1;
+  }
+}
+
+
+
+
+
+
